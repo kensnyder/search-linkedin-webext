@@ -1,0 +1,32 @@
+{
+  "name": "search-linkedin-webext",
+  "version": "1.0.0",
+  "description": "Example WebExtension that searches LinkedIn",
+  "private": true,
+  "scripts": {
+    "install": "cp node_modules/webextension-polyfill/dist/browser-polyfill.js extension/js/browser-polyfill.js && npx webpack",
+    "start": "npx webpack --watch",
+    "build": "npx webpack",
+    "bump": "node cli.js bump",
+    "zip-chrome": "cd ./extension && zip -r -FS ../dist/chrome.zip * && cd ..",
+    "zip-firefox": "zip -r -FS dist/firefox.zip * --exclude node_modules/\\* *.md package.json package-lock.json *.config.js cli.js *.e2e.js *.spec.js dist/\\*",
+    "release": "npm run bump && npm run build && npm run zip-chrome && npm run zip-firefox",
+    "firefox": "npx web-ext run -s extension"
+  },
+  "author": "Ken Snyder",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "chalk": "^2.4.1",
+    "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "web-ext": "^2.9.1",
+    "webextension-polyfill": "^0.3.1",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "yargs": "^12.0.2"
+  }
+}

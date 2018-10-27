@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+.idea/
+dist/*.*
+extension/js/*.*
+extension/pages/**/browser-polyfill.js
+extension/pages/**/bundle.js
+extension/pages/**/bundle.css

@@ -1,0 +1,47 @@
+{
+  "description": "WebExtensions API Example",
+  "manifest_version": 2,
+  "name": "Search on LinkedIn",
+  "short_name": "Search on LinkedIn",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/logo-16.png",
+    "19": "icons/logo-19.png",
+    "32": "icons/logo-32.png",
+    "38": "icons/logo-38.png",
+    "48": "icons/logo-48.png",
+    "96": "icons/logo-96.png",
+    "128": "icons/logo-128.png",
+    "512": "icons/logo-512.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/mail/u/*"
+      ],
+      "js": [
+        "/js/browser-polyfill.js",
+        "/js/gmail-injection.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "/js/browser-polyfill.js",
+      "/js/background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "/icons/logo-48.png",
+    "default_title": "WebExtension Example"
+  },
+  "omnibox": {
+    "keyword": "li"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "contextMenus",
+    "<all_urls>"
+  ]
+}
