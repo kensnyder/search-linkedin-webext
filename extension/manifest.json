@@ -22,6 +22,10 @@
       "js": [
         "/js/browser-polyfill.js",
         "/js/gmail-injection.js"
+      ],
+      "run_at": "document_idle",
+      "css": [
+        "/css/gmail-injection.css"
       ]
     }
   ],
@@ -33,15 +37,17 @@
   },
   "browser_action": {
     "default_icon": "/icons/logo-48.png",
-    "default_title": "WebExtension Example"
+    "default_title": "Search on LinkedIn"
   },
+  "web_accessible_resources": [
+    "icons/logo-32.png"
+  ],
   "omnibox": {
     "keyword": "li"
   },
   "permissions": [
     "activeTab",
     "tabs",
-    "contextMenus",
-    "<all_urls>"
+    "contextMenus"
   ]
 }

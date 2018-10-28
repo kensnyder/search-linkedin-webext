@@ -29,9 +29,6 @@ module.exports = {
 						presets: [
 							['@babel/preset-env', babelEnvOptions],
 						],
-						plugins: [
-							'@babel/plugin-proposal-class-properties',
-						],
 					},
 				},
 			},

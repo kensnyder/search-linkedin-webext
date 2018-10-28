@@ -1,0 +1,18 @@
+.search-linkedin {
+	display: inline-block;
+	vertical-align: middle;
+	height: 16px;
+	width: 16px;
+	border-radius: 8px;
+	text-decoration: none;
+	margin-left: 2px;
+	background-size: 10px 10px;
+	background-color: #eee;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	border: 1px solid transparent;
+}
+.search-linkedin:hover {
+	border: 1px solid #3773E8;
+	background-color: #ccc;
+}

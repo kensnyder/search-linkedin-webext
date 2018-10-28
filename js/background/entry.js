@@ -1,3 +1,3 @@
-import './context-menu/context-menu-setup.js';
-import './omnibox/omnibox-setup.js';
-import './icon/icon-setup.js';
+import './context-menu.js';
+import './omnibox.js';
+import './icon.js';
