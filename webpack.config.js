@@ -13,6 +13,7 @@ module.exports = {
 	entry: {
 		'js/background': './js/background/entry.js',
 		'js/gmail-injection': './js/gmail-injection/entry.js',
+		'pages/search-history/bundle': './pages/search-history/entry.js',
 	},
 	output: {
 		filename: '[name].js',
