@@ -1,3 +1,5 @@
+import { linkedIn } from '../../libs/linkedIn.js';
+
 browser.contextMenus.create({
 	id: 'search-contacts',
 	title: 'Search on LinkedIn',
@@ -5,10 +7,11 @@ browser.contextMenus.create({
 });
 browser.contextMenus.onClicked.addListener(function(details, tab) {
 	if (details.menuItemId == this.id) {
-		const search = encodeURIComponent(details.selectionText);
+		const name = details.selectionText;
 		browser.tabs.create({
-			url: `https://www.linkedin.com/search/results/all/?keywords=${search}&origin=GLOBAL_SEARCH_HEADER`,
+			url: linkedIn.getSearchUrl(name),
 			index: tab.index + 1,
 		});
+		linkedIn.recordSearch(name, 'context menu');
 	}
 });

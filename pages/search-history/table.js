@@ -1,26 +1,31 @@
+import { linkedIn } from '../../libs/linkedIn.js';
 import './table.css';
 
-document.querySelector('main').innerHTML = buildTable();
+generatePageHtml().then(html => {
+	document.querySelector('main').innerHTML = html;
+});
 
-function buildTable() {
+async function generatePageHtml() {
 
-	// get localstorage data
-	const history = [
-		{ name: 'Bill Gates', href: 'https://www.linkedin.com/search/results/all/?keywords=Bill%20Gates&origin=GLOBAL_SEARCH_HEADER', date: +new Date },
-		{ name: 'Herbert Hoover', href: 'https://www.linkedin.com/search/results/all/?keywords=Herbert%20Hoover&origin=GLOBAL_SEARCH_HEADER', date: +new Date },
-	];
+	const history = await linkedIn.getHistory();
 
 	return `
 		<h1>My Recent Searches</h1>
 		<table>
+			<tr>
+				<th>Search</th>		
+				<th>Source</th>		
+				<th>Date</th>		
+			</tr>
 			${history.map(search => {
 				return `
 					<tr>
 						<td>
-							<a href="${esc(search.href)}" target="_blank">
+							<a href="${esc(search.url)}" target="_blank">
 								${esc(search.name)}
 							</a>
 						</td>
+						<td>${esc(search.source)}</td>
 						<td>${dateFormat(search.date)}</td>
 					</tr>
 				`;	
@@ -40,5 +45,5 @@ function esc(string) {
 
 function dateFormat(timestamp) {
 	const date = new Date(timestamp);
-	return date.getDay() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+	return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
 }
