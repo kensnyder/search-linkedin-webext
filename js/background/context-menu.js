@@ -6,7 +6,7 @@ browser.contextMenus.create({
 	contexts: ['selection'],
 });
 browser.contextMenus.onClicked.addListener(function(details, tab) {
-	if (details.menuItemId == this.id) {
+	if (details.menuItemId == 'search-contacts') {
 		const name = details.selectionText;
 		browser.tabs.create({
 			url: linkedIn.getSearchUrl(name),
