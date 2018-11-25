@@ -1,8 +1,8 @@
-# Managing and Extending this WebExtension
+# Managing and Extending this Web Extension
 
 ## npm commands
 
-- `install` - Install and move browser-polyfill.js to the right place
+- `install` - Install and copy browser-polyfill.js to the right place
 - `start` - Starts webpack watch
 - `build` - Runs wepback to create the unpacked extension
 - `release` - Bump manifest version and zip extensions into releasable packages:

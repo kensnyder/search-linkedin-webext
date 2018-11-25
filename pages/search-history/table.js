@@ -1,10 +1,10 @@
 import { linkedIn } from '../../libs/linkedIn.js';
 import './table.css';
 
-generatePageHtml().then(html => {
-	document.querySelector('main').innerHTML = html;
-});
+render();
 
+// super simple function to create html
+// you would probably want to use Angular, React, Vue, or other
 async function generatePageHtml() {
 
 	const history = await linkedIn.getHistory();
@@ -31,9 +31,25 @@ async function generatePageHtml() {
 				`;	
 			}).join('')}
 		<table>
+		<button>Clear History</button>
 	`;
 }
 
+// generate the html and insert into dom
+function render() {
+	generatePageHtml().then(html => {
+		document.querySelector('main').innerHTML = html;
+		document.querySelector('button').addEventListener('click', clearHistory);
+	});
+}
+
+// remove all the history entries and re-render page
+function clearHistory() {
+	linkedIn.clearHistory();
+	render();
+}
+
+// escape html entities
 function esc(string) {
 	return (
 		String(string || '')
@@ -43,7 +59,8 @@ function esc(string) {
 	);
 }
 
+// format a millisecond timestamp into preferred Locale
 function dateFormat(timestamp) {
 	const date = new Date(timestamp);
-	return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+	return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
 }

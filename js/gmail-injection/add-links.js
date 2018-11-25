@@ -1,22 +1,25 @@
 import { linkedIn } from '../../libs/linkedIn';
 
+// ideally you would want to use MutationObserver
 setInterval(addLinks, 1000);
 
 // get the "chrome://..." URL to our logo icon
 const imgUrl = browser.runtime.getURL('/icons/logo-32.png');
 
+// add link for each name found in DOM
 function addLinks() {
 	// find every span that has attributes "name" and "email"
 	[...document.querySelectorAll('span[name][email]')].forEach(addLink);
 }
 
+// add a single link for the given name
 function addLink(span) {
-	if (span.nameProcessed) {
+	if (span.wasProcessed) {
 		// only process each link once
 		return;
 	}
-	span.nameProcessed = true;
-	if (span.parentNode.getAttribute('role') != 'gridcell') {
+	span.wasProcessed = true;
+	if (span.parentNode.getAttribute('role') !== 'gridcell') {
 		// not an email detail page
 		return;
 	}
@@ -25,15 +28,15 @@ function addLink(span) {
 	// construct the LinkedIn URL
 	const href = linkedIn.getSearchUrl(name);
 	// add the link element
-	const link = document.createElement('a');
-	link.setAttribute('href', href);
-	link.setAttribute('targe', '_blank');
-	link.className = 'search-linkedin';
-	link.style.backgroundImage = `url(${imgUrl})`;
+	const a = document.createElement('a');
+	a.setAttribute('href', href);
+	a.setAttribute('target', '_blank');
+	a.className = 'search-linkedin';
+	a.style.backgroundImage = `url(${imgUrl})`;
 	// record search when clicked
-	link.addEventListener('click', function() {
+	a.addEventListener('click', function() {
 		linkedIn.recordSearch(name, 'gmail');
 	}, false);
-	// add link element
-	span.appendChild(link);
+	// show link to the right of span text
+	span.appendChild(a);
 }

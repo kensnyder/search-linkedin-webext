@@ -1,3 +1,36 @@
 body {
-	background-color: #eee;
+	background-color: #fff;
+	padding: 20px;
+	margin: 0;
+}
+body, button {
+	font: normal 18px 'Helvetica Neue', Arial, sans-serif;
+	color: #222;
+}
+table {
+	border-collapse: collapse;
+}
+th, td {
+	text-align: left;
+	padding: 5px 12px;
+	border: 1px solid #bbb;
+}
+h1 {
+	padding: 0 0 20px 0;
+	margin: 0;
+}
+a {
+	text-decoration: none;
+	color: #5241ff;
+}
+button {
+	padding: 5px 12px;
+	border: 1px solid #bbb;
+	margin-top: 20px;
+	border-radius: 4px;
+	box-shadow: 0 0 6px #bbb inset;
+	background-color: #fff;
+}
+button:hover {
+	background-color: #f0f0f0;
 }
