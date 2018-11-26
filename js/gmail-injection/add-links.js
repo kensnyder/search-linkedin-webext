@@ -1,10 +1,12 @@
 import { linkedIn } from '../../libs/linkedIn';
 
+// get the "chrome://..." URL to our logo icon
+const imgUrl = browser.runtime.getURL('/icons/logo-32.png');
+
 // ideally you would want to use MutationObserver
 setInterval(addLinks, 1000);
 
-// get the "chrome://..." URL to our logo icon
-const imgUrl = browser.runtime.getURL('/icons/logo-32.png');
+// functions only beyond this point
 
 // add link for each name found in DOM
 function addLinks() {

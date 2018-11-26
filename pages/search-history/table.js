@@ -1,7 +1,10 @@
 import { linkedIn } from '../../libs/linkedIn.js';
 import './table.css';
 
+// create html and insert into page
 render();
+
+// functions only below this point
 
 // super simple function to create html
 // you would probably want to use Angular, React, Vue, or other
