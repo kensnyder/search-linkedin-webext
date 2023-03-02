@@ -23,7 +23,7 @@
     "chalk": "^2.4.1",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.4",
-    "web-ext": "^2.9.1",
+    "web-ext": "^7.5.0",
     "webextension-polyfill": "^0.3.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
